@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NG REPEAT EXAMPLE</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body ng-app>
+<!--<script>-->
+    <!--var myApp=angular.module('mainModule',[]);-->
+    <!--myApp.controller('mainController',function($scope){-->
+        <!---->
+    <!--});-->
+<!--</script>-->
+<div ng-init="usernames = ['Sheo', 'Narayan', 'Dutta']">
+    <ul>
+        <li ng-repeat="username in usernames">{{username}}</li>
+    </ul>
+</div>
+</body>
+</html>

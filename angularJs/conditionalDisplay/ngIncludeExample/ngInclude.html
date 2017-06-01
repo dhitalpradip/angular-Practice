@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ngInclude</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+</head>
+<body>
+<div ng-app>
+    <select ng-model="thisISmodel" ng-init="thisISmodel='firstPge.html'">
+        <option value="firstPge.html">This is First Page</option>
+        <option value="secondPage.html">This is Second Page</option>
+    </select>
+write your name: <input type="text" ng-model="printName">
+    {{printName}}
+
+
+<div style="border:1px solid #808080;"ng-include="thisISmodel">
+</div>
+</div>
+</body>
+</html>

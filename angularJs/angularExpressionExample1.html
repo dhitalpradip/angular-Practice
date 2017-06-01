@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular expression example 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-App>
+
+<!--// changing color of textbox using databinding operation, where color is initialized as green at first-->
+<div class='formGroup' ng-init="changeInputBoxColor= 'green '">
+    <label>type to change textbox color : </label>
+    <input style="background-color:{{changeInputBoxColor}}" ng-model="changeInputBoxColor" value="{{changeInputBoxColor}}">
+</div>
+<hr/>
+
+<!--converting  rupees form dollar using databinding operation, where currencies are initialized as below at first-->
+
+<div class='formGroup'>
+    <label style="color: red">Math operations</label>
+    <div ng-init="dollars=5;rupeeConversion=100">
+
+        Total in Rupees: {{ dollars * rupeeConversion }}
+
+    </div>
+</div>
+<hr/>
+
+<!--concatinating using databinding operation-->
+
+
+<div class='formGroup'>
+    <label style="color: green">concatinating operator</label>
+    <div ng-init="country='Nepal';capital='Kathmandu'">
+    {{"Country is: " + country+ " " + "Capital is: " +capital}}
+    </div>
+</div>
+<hr/>
+
+
+<!--object operation-->
+<div class="formGroup">
+    <label style="color: #135b9b">Object Operation</label>
+    <div ng-init="house={address:'cupertino',type:'town house'}">
+        <div>The house address is : {{house.address}}</div>
+        The house type is : <span ng-bind="house.type"></span>
+    </div>
+</div>
+<hr/>
+
+<!--array operation-->
+
+<div class="formGroup">
+    <label style="color: #990000">Array Operations</label>
+    <div ng-init="cellPhones = ['iPhone 7 plus','LG plus','Samsung S3','HTC M9']">
+        {{cellPhones[0]}} is made by Apple.<br/>
+        {{cellPhones[1]}} is made by LG.
+        <br/>
+        <span ng-bind="cellPhones[2]"></span> is made by Samsung.
+    </div>
+</div>
+<div ng-show="{{cellPhones}}"></div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body ng-app="myModule">
+<div ng-controller="mainController">
+    <table class="friends">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+        </tr>
+       <h3>{{title}}</h3>
+        <tr ng-repeat="friend in friends | orderBy:'-age'">
+            <td>{{friend.name}}</td>
+            <td>{{friend.phone}}</td>
+            <td>{{friend.age}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var myApp = angular.module('myModule', []);
+        myApp.controller('mainController', ['$scope','$http', function($scope,$http) {
+            $scope.title = "Followings are the json data";
+            $http.get('getJson.json').then(function(data){
+                 $scope.friends = data.data;
+
+
+            });
+        }]);
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>accessing variable without scope</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+</head>
+<body>
+<div ng-app="mainModule">
+<div ng-controller="mainController as mainControl">
+    {{"User Name is :" + " " +mainControl.userName}}
+</div>
+</div>
+
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',function(){
+        console.log(this);
+        this.userName = 'dhitalpradip';
+
+    });
+</script>
+
+</body>
+</html>

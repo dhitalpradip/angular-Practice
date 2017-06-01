@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ngChangeEVENTS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="changeController">
+
+    <!-- for checkbox-->
+    <input type="checkbox" name="check1" ng-change="checkBoxChanged()" ng-model="checkValue">
+    <p>CheckBox status : {{checkBoxStatus}}</p><hr/>
+
+    <!--for textBox-->
+    <input type="text" name="text1" ng-change="textBoxChanged()" ng-model="textBoxValue">
+    <p>TextBox status : {{textBoxStatus}}</p><hr/>
+
+    <!--for dropdown-->
+    <select name="dropDownChange" name="drop1" ng-change="dropDownChanged()" ng-model="dropValue">
+        <option value="M" >Male</option>
+        <option value="F">Female</option>
+    </select>
+    <p>DropDown box status : {{dropDownStatus}}</p>
+
+</div>
+
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('changeController',function($scope){
+
+
+        $scope.checkBoxChanged = function(){
+            $scope.checkBoxStatus = $scope.checkValue;
+        };
+
+        $scope.textBoxChanged = function(){
+            $scope.textBoxStatus = $scope.textBoxValue;
+        };
+
+        $scope.dropDownChanged = function(){
+            $scope.dropDownStatus = $scope.dropValue;
+        };
+
+
+    });
+
+</script>
+
+</body>
+</html>

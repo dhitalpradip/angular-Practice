@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>controller inheritance</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('GrandFatherController', ['$scope', function($scope) {
+        $scope.GrandSirname = 'Mehta';
+        $scope.Name = 'Ram Dhyan ';
+    }]);
+
+    app.controller('FatherController', ['$scope', function($scope) {
+        $scope.FatherSirname = 'Narayan';
+        $scope.Name = 'Sheo ';
+    }]);
+
+    app.controller('ChildController', ['$scope', function($scope) {
+        $scope.Name = 'Shreeharsh';
+    }]);
+
+</script>
+
+<p>Controller Inheritance</p>
+<div ng-app="app" ng-controller="GrandFatherController">
+    Grand father name : {{ Name }} {{ GrandSirname }}
+
+    <div ng-controller="FatherController">
+        Father name : {{ Name }} {{ FatherSirname }}
+        {{ GrandSirname }}
+
+        <div ng-controller="ChildController">
+            Child name : {{ Name }} {{ FatherSirname }}
+            {{ GrandSirname }}
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

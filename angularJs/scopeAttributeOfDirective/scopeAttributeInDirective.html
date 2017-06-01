@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope attribute in directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body ng-app="app">
+<div ng-app="app" ng-controller="CustomDirectiveIsolateScope">
+    <my-details info="Member"></my-details>
+    <my-details info="Employee"></my-details>
+</div>
+<script>
+    var app = angular.module("app", []);
+
+    app.controller("CustomDirectiveIsolateScope", function ($scope) {
+        $scope.Member = { username: 'Sheo', address: 'Hyderabad, India' };
+        $scope.Employee = { username: 'Mannu', address: 'Bangaluru, USA' };
+    });
+
+    app.directive("myDetails", function () {
+        return {
+            scope: {
+                People: '=info'
+            },
+            templateUrl: '../scopeAttributeOfDirective/template.html'
+        };
+    });
+</script>
+
+
+
+
+</body>
+</html>

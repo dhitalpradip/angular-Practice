@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datae formatting</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="mainController">
+{{myDate|date:'dd/MM/yyyy'}}<br>
+    {{myDate| date: fullDate}}
+</div>
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',function($scope){
+        $scope.myDate = new Date();
+    });
+</script>
+</body>
+</html>

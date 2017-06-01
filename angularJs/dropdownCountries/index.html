@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Country select Try</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="countrySelect.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="dropDownCtrl">
+        <dropdown-Select-Directive countries = "{
+    'USA': {
+    'California': ['Sacramento', 'Fremont'],
+    'Texas': ['Houston', 'Dallas']
+    },
+    'Nepal': {
+    'Kathmandu': ['Budhanilkantha'],
+    'Lalitpur': ['Godavari']
+    }
+    }"
+        ></dropdown-Select-Directive>
+    </div>
+</div>
+</body>
+</html>

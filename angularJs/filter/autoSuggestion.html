@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="SearchCtrl">
+        <div>
+            <input type="text" ng-model="item.location">
+        </div>
+        <div>
+            <input type="text" ng-model="item.name">
+        </div>
+
+        <ul>
+            <li ng-repeat="detail in userDetails | filter:{name:item.name} | filter:{location:item.location} ">
+                <span>{{detail.name}}</span>
+                <span>{{detail.location}}</span>
+                <span>{{detail.id}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    angular.module('app', [])
+        .controller('SearchCtrl', function($scope, $filter) {
+
+
+            $scope.userDetails = [
+                {name:'ram', location:'cupertino', id:9},
+                {name:'pradip', location:'SanJose', id:4},
+                {name:'bobby', location:'fremont', id:3},
+            ];
+
+
+        });
+    app
+        .filter('getDetail', function() {
+        return function(array, value) {
+            var ret = [];
+            angular.forEach(array, function(item) {
+                if (item.name.indexOf(value) > -1) {
+                    ret.push(item.location);
+                }
+            });
+
+            return ret[0] || '';
+        };
+
+    });
+</script>
+
+</body>
+</html>

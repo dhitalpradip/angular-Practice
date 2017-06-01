@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sanga Landing Page</title>
+    <link href="resources/css/screen.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/accountSetup.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+
+</head>
+<body ng-app="myAngularApp">
+<div id="titlePane">
+    <div class="logo apple-clear-logo"></div>
+    <div class="titleText">Angular Directives</div>
+</div>
+
+<div class="content contentWhite">
+    <h3 class='subHeading tabHeading'>
+        <span class='headingTxt'>AngularJS Directives</span>
+    </h3>
+
+    <form class="richUIForm" ng-init="dollars=189;rupeeConversion=67">
+        <div class='formGroup'>
+            <label>Dollars:</label>
+            <input type="text" ng-model="dollars">
+        </div>
+        <div class='formGroup'>
+            <label>Rupee Conversion Rate:</label>
+            <input type="text" ng-model="rupeeConversion">
+        </div>
+        <div class='formGroup'>
+            <label>Total in Rupees:</label>
+            {{ dollars * rupeeConversion | currency}}
+        </div>
+        <div class='formGroup'>
+            <label>Repeat Directive:</label>
+            <table border="1" ng-init="vehiclesList=[{make:'TATA',model:'Safari'},{make:'Maruthi',model:'Swift'},{make:'Bajaj',model:'Chetak'}]">
+                <thead><tr><th>Vehicle Company</th><th>Vehicle Model</th></tr></thead>
+                <tbody>
+                <tr ng-repeat="obj in vehiclesList">
+                    <td>{{obj.make | uppercase}}</td>
+                    <td>{{obj.model | lowercase}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="formGroup">
+            <label>Select with Repeat - From Controller</label>
+            <select ng-controller="appController">
+                <option ng-repeat="vehicle in carsList">{{vehicle.make}}-{{vehicle.model}}</option>
+            </select>
+
+        </div>
+        <div class='formGroup'>
+            <label>Custom Directives Element:</label>
+            <ui-class-directive></ui-class-directive>
+        </div>
+        <div class='formGroup'>
+            <label>Custom Directives Attribute:</label>
+            <span ui-class-directive></span>
+        </div>
+    </form>
+
+
+</div>
+<script>
+    var firstApp = angular.module("myAngularApp", []);
+
+    firstApp.controller("appController", function($scope) {
+        $scope.MVCFramework	= "AngularJS";
+        $scope.company= "Google";
+        $scope.carsList = [{make:'TATA1',model:'Safari1'},{make:'Maruthi1',model:'Swift1'},{make:'Bajaj1',model:'Chetak1'}]
+    });
+
+    firstApp.directive("uiClassDirective", function() {
+        return {
+            restrict:"EA",
+            template : "<h1>Its coming from Custom directive!</h1>"
+        };
+    });
+
+</script>
+</body>
+
+</html>

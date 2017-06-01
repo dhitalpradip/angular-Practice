@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>adding data into collection</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body ng-app="mainModule">
+<script>
+    var student = [
+        { username: 'harilal', address: 'Hyderabad' },
+        { username: 'ramsharan', address: 'Bokaro' },
+        { username: 'bishwonath', address: 'Aurangabad' },
+        { username: 'kesabkumar', address: 'New York' }
+    ];
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',function($scope){
+        $scope.details = student;
+        $scope.addStudent=function(newStudentUserName,newStudentAddress){
+            $scope.details.splice(2,0,{username:newStudentUserName, address:newStudentAddress}); // dymanic way of doing
+            $scope.details.splice(2,0,{username:'pradip', address:'cupertino'}); // static way of doing
+        }
+        $scope.removeStudent = function (index) {
+            $scope.details.splice(index, 1);
+        }
+
+    });
+</script>
+<div ng-controller="mainController">
+    UserName: <input type="text" ng-model="newStudentUserName" name="newStudentUserName">
+    Address: <input type="text" ng-model="newStudentAddress" name="newStudentAddress">
+<button ng-click="addStudent(newStudentUserName,newStudentAddress)">Add Student</button>
+
+    Enter number to remove index: <input type="number" ng-model="index" name="index">
+    <button ng-click="removeStudent(index)" ng-model="index">Remove Student</button>
+
+    <table ng-repeat="student in details">
+
+        <tr>
+            <td>{{$index + 1}}. Name: {{student.username}} Address: {{student.address}}</td>
+
+        </tr>
+    </table>
+
+
+
+
+</div>
+</body>
+</html>

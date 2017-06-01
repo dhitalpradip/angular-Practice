@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nested controller</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+</head>
+<body>
+<div ng-app="mainModule">
+    <div ng-controller="parentController">
+        {{userName + " :- " + " This is printed from Parent controller, i.e. outside of nested controller"}}
+        <div ng-controller="nestedController">
+            {{userName + " :- " + " This is printed from nested controller, i.e. inside of nested controller"}}
+            <div>{{$parent.userName+ " :- " + " This is printed from nested controller, i.e. inside of nested controller, but it has access to parent controller through $parent property"}}</div>
+        </div>
+    </div>
+</div>
+
+<!--Nested controllers are possible like this-->
+
+<script>
+    var mainApp = angular.module('mainModule',[]);
+    mainApp.controller('parentController',function($scope){
+        $scope.userName = "crownPradip";
+        $scope.location = "cupertino";
+
+    })
+        .controller('nestedController',function($scope){
+            $scope.userName = "dhitalPradip";
+            $scope.Name = "pradip";
+        });
+
+</script>
+
+</body>
+</html>

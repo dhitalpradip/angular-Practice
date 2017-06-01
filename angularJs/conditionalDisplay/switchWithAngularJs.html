@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>switch in angular js</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-app>
+<select ng-model="dropSelection" ng-init="dropSelection='select'">
+    <option value="js">JavaScript</option>
+    <option value="php">PHP</option>
+    <option value="jva">JAVA</option>
+    <option value="select">Select</option>
+</select>
+
+<div ng-switch="dropSelection">
+    <div ng-switch-when="js">JavaScript is client side scripting language.</div>
+    <div ng-switch-when="php">PHP is server side programming language.</div>
+    <div ng-switch-when="jva">JAVA is server side programming language.</div>
+    <div ng-switch-default="select">Please select one from the dropdown list</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="myAppHTML">
+<head>
+    <title>My first AngularJS ng-form Directive code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js">
+    </script>
+    <script>
+        var myApp = angular.module('myAppHTML',[]);
+        myApp.controller('formData',function($scope) {
+            /*$scope.userName = 'Ui Developer';
+             $scope.email = 'ui@js.com';
+             $scope.password = '87912';*/
+        });
+    </script>
+    <style>
+        .error {
+            border: 1px solid #FF552A;
+            color:#FF552A;
+        }
+    </style>
+</head>
+<body>
+<form name="login" ng-controller="formData" novalidate>
+    <div ng-form="loginform">
+        <p>
+            User Name :
+            <input type="text" name="userName" ng-model="userName" placeholder="User Name" required/>
+        <div ng-show="loginform.userName.$dirty && loginform.userName.$invalid">
+                <span class="error" ng-show="loginform.userName.$error.required">
+                    User name is required.
+                </span>
+        </div>
+        </p>
+        <p>Email :
+            <input type="email" name="email" ng-model="email" placeholder="Email ID" required/>
+        <div ng-show="loginform.email.$dirty && loginform.email.$invalid">
+                      <span class="error" ng-show="loginform.email.$error.required">
+                      Email is required.
+                      </span>
+            <span class="error" ng-show="loginform.email.$error.email">
+                      Enter a valid email.
+                      </span>
+        </div>
+        </p>
+
+        <p>Password :
+            <input type="password" name="password" ng-model="password" placeholder="Password" required/>
+        <div ng-show="loginform.password.$dirty && loginform.password.$invalid">
+                  <span class="error" ng-show="loginform.password.$error.required">
+                  Password is required.
+                  </span>
+        </div>
+        </p>
+    </div>
+
+    <!--button type="submit" ng-disabled="(login.loginform.userName.$dirty && login.loginform.userName.$invalid)
+                                        || (login.loginform.email.$dirty && login.loginform.email.$invalid)
+                                        || (login.loginform.password.$dirty && login.loginform.password.$invalid)">Submit Form</button-->
+    <button type="submit" ng-disabled="login.loginform.$invalid">Submit Form</button>
+</form>
+
+</body>
+</html>

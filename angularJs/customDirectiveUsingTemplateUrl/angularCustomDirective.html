@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body>
+<h2>Directive Custom</h2>
+<script>
+    var app = angular.module("app", [])
+        .controller("CustomDirectiveController", function ($scope) {
+            $scope.username = "SheoNarayan";
+            $scope.address = "Hyderabad, India";
+        });
+
+    app.directive('myCustomUrl', function () {
+        return {
+            templateUrl: 'template.html'
+        };
+    });
+
+</script>
+<div ng-app="app" ng-controller="CustomDirectiveController">
+    <h2>Custom directive with external page</h2>
+    <div my-custom-url></div>
+</div>
+
+</body>
+</html>

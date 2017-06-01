@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APPROVED OR REJECT</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-app="mainTravelAppModule">
+<div ng-controller="mainController">
+    <tr ng-repeat="items in travellerInfo" ng-style="{'background-color': ((row.status == 1) ? 'green' : (row.status == 0) ? 'red' : '') }">
+        <td>{{items.name}}</td>
+        <td>{{items.age}}</td>
+    </tr>
+</div>
+<script>
+    var mainTravelApp = angular.module('mainTravelAppModule',[]);
+    mainTravelApp.controller('mainController',function($scope,$rootScope){
+        $scope.destination=['Annapurna Base Camp(ABC)', 'Pokhara', 'Kathmandu', 'Mustang'];
+        $scope.travellerInfo = [
+            {name:'john', age:25, state:'california'},
+            {name:'marcel', age:28, state:'texas'},
+            {name:'klaus', age:29, state:'virginia'},
+            {name:'elizah', age:35, state:'nevada'},
+            {name:'haley', age:31, state:'portland'}
+        ];
+    });
+</script>
+
+</body>
+</html>

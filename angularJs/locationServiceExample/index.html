@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location Service Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+</head>
+<body ng-app="locationServiceApp">
+<div ng-controller="locationServiceController">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">CrownPradip</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+   <h4>Hello {{name}},</h4>
+    <h4>Your Page Url is below:</h4> <br/>{{pageUrl}}
+    <h4>Your Page Url host is below:</h4> <br/>{{getPageHost}}
+    <h4>Your Page Url port number is below:</h4> <br/>{{getPort}}<br/>
+    <!--<h4>Your Page Url protocol is below:</h4> <br/>{{protocol}}<br/>-->
+
+    {{setUrl}}
+
+</div>
+
+
+
+<script type="text/javascript" src="../locationServiceExample/locationServiceExample.controller.js" rel="script"></script>
+</body>
+</html>

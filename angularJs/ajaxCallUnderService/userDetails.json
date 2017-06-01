@@ -1,0 +1,27 @@
+[
+
+  {
+    "email":"dhitalpradip@gmail.com",
+    "password":"abc334",
+    "country":"nepal",
+    "gender":"male"
+  },
+  {
+    "email":"john@gmail.com",
+    "password":"dfasfj",
+    "country":"china",
+    "gender":"male"
+  },
+  {
+    "email":"liontank@gmail.com",
+    "password":"dfdsdd5",
+    "country":"canada",
+    "gender":"male"
+  },
+  {
+    "email":"kabita@gmail.com",
+    "password":"dfsa555",
+    "country":"india",
+    "gender":"female"
+  }
+]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css styling using angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body ng-app="mainModule" >
+<div ng-controller="mainController">
+    <select name="changeDropDown" ng-model="changeDropDown" ng-change="dropDownChanged()" ng-init="changeDropDown='Select'">
+        <option value="Red">Red</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Brown">Brown</option>
+        <option value="Select">Select</option>
+    </select>
+    {{printDropDownValue}}
+</div>
+
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',function($scope){
+       $scope.dropDownChanged= function(){
+           $scope.printDropDownValue = $scope.changeDropDown;
+       };
+    });
+</script>
+
+</body>
+</html>

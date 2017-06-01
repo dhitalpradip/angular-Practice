@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Filter Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+</head>
+<body ng-app="mainModule">
+<script>
+var myApp = angular.module('mainModule',[]);
+myApp.controller('mainController',function($scope){
+   $scope.name = "My name is pradip dhital";
+   $scope.characterLimitInName = 5;
+
+    $scope.nameArray = ['my','name','is','pradip','dhital'];
+    $scope.characterLimitInArray = 3;
+});
+</script>
+<h1>LimitTo filter example</h1>
+<div ng-controller="mainController">
+<input type="number" ng-model="characterLimitInName">
+    {{name | limitTo:characterLimitInName}}
+</div>
+
+
+
+
+</body>
+</html>

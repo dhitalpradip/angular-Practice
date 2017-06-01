@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch, on and broadcast</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+</head>
+<body ng-app="myApp">
+<div ng-controller='watchExampleController'>
+    {{ increment }}<br/>
+    {{ text }}
+    <button ng-click='add()'>Add</button>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('watchExampleController', function($scope,$rootScope) {
+        $scope.increment = 0;
+        $scope.text = '';
+        $scope.add = function() {
+            $rootScope.$broadcast('hasIncremented');
+        }
+        $scope.$on('hasIncremented', function(event) {
+            $scope.increment++;
+        });
+
+        $scope.$watch('increment', function() {
+            $scope.text = 'Your increment now =' + $scope.increment;
+        });
+    });
+</script>
+
+
+</body>
+</html>

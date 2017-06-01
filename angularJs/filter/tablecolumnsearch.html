@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="filterExample">
+
+<head>
+    <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+
+</head>
+
+<body ng-controller="tableSearchController as filterCtrl">
+
+<input ng-model="search" />
+<table>
+    <tbody>
+    <tr ng-repeat="item in filterCtrl.data | filter:search | orderBy:title">
+        <td style="border: 1px solid red">{{item.title}}</td>
+        <td style="border: 1px solid red">{{item.message}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+    var myApp = angular.module ("filterExample", []);
+
+    myApp.controller ("tableSearchController", function () {
+        this.data = [{title:"engineer", message:"software engineer"}, {title:"doctor", message:"stomach doctor"},
+            {title:"manager", message:"manager at codegarage"}];
+
+    });
+</script>
+</body>
+
+</html>

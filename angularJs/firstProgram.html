@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-app="myFirstApp">
+<div ng-controller="firstController">
+    <li style="list-style-type: none; color: red">UserName = {{userDetails.userName}}</li>
+</div>
+
+
+
+<script>
+    var myApp = angular.module('myFirstApp',[]);
+    myApp.controller('firstController', function($scope){
+        $scope.userDetails = {};
+        $scope.userDetails.userName = 'pradip';
+    });
+
+</script>
+
+
+
+</body>
+</html>

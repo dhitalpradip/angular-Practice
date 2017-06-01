@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>angular expression example </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+
+</head>
+<body ng-app="" ng-init="displayFlag=true;array1=[1,2]">
+<div id="titlePane">
+    <div class="logo apple-clear-logo"></div>
+    <div class="titleText">Angular Expressions</div>
+</div>
+
+<div class="content contentWhite">
+    <h3 class='subHeading tabHeading'>
+        <span class='headingTxt'>AngularJS Expressions</span>
+    </h3>
+
+    <form class="richUIForm">
+        <div class='formGroup' ng-init="userColor='red'">
+            <label>Color :</label>
+            <input style="background-color:{{userColor}}" ng-model="userColor" value="{{userColor}}">
+        </div>
+        <div class='formGroup'>
+            <label>Math Operations:</label>
+
+            <div ng-init="dollars=189;rupeeConversion=67">
+
+                Total in Rupees: {{ dollars * rupeeConversion }}
+
+            </div>
+        </div>
+        <div class='formGroup'>
+            <label>With Variables:</label>
+
+            <div ng-init="country='India';capital='Delhi'">
+
+                {{ country + " capital is " + capital }}
+
+            </div>
+        </div>
+        <div class='formGroup'>
+            <label>With Objects:</label>
+            <div ng-init="carsObj={make:'TATA',model:'Safari'}">
+                The Car Make Company is <span ng-bind="carsObj.make">Inside Span tag</span>||
+                The Car Model is {{carsObj.model}}
+
+            </div>
+            {{carsObj}}
+        </div>
+        <div class='formGroup'>
+            <label>With Arrays:</label>
+            <div ng-init="cars=['Tata Safari','Maruthi Swift', 'Ambasador']" ng-show="array1.length>4">
+
+                India's Cars 1 : {{cars[0]}}
+                India's Cars 2 : <span ng-bind="cars[1]"></span>
+
+
+            </div>
+        </div>
+    </form>
+
+
+</div>
+<script>
+
+</script>
+</body>
+
+</html>

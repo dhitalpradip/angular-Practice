@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regex based filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="mainController">
+
+        <ul>
+            <li ng-repeat="detail in userDetails | filter:detail.name:strict ">
+                <span>{{detail.name}}</span>
+                <span>{{detail.location}}</span>
+                <span>{{detail.email}}</span>
+            </li>
+        </ul>
+
+
+
+    <input type="text" ng-model="detail.name">
+
+</div>
+
+
+<script>
+    var myApp = angular.module('mainModule',['$http']);
+    myApp.filter('filterByRegex', function(){
+        return function(val){
+            var regExp = /\(([^)]+)\)/;
+            var match = regExp.exec(val);
+            return match[1];
+        };
+    });
+    myApp.controller('mainController',function($scope){
+        $scope.userDetails = [
+            {name:'ram', location:'cupertino', email:'ram@gmail.com'},
+            {name:'pradip', location:'SanJose',email:'dhitalpradip@hotmail.com'},
+            {name:'bobby', location:'fremont', email:'shyam@gmail.com'},
+        ];
+    });
+</script>
+
+</body>
+</html>

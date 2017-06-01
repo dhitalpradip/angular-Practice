@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular If example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+</head>
+<body>
+<div ng-app>
+    <label><input type="checkbox" ng-model='agree'/> I agree the terms and conditions.</label>
+    <div ng-if="agree" style="color:green;background-color:yellow">HI, you just agreed to terms and conditions.</div>
+    <div ng-if="!agree" style="color:green;background-color:sandybrown">HI, you just dis-agreed to terms and conditions.</div>
+</div>
+
+</body>
+</html>

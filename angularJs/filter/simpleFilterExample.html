@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Filter Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+</head>
+<body ng-app>
+<div ng-init="students=[{username:'pradip',address: 'CUPERTINO',salary:25000},{username:'dhital',address: 'SANJOSE',salary:15000}]">
+<ul>
+    <!--this is for username and address filtering -->
+    <li ng-repeat="student in students">
+        {{student.username | uppercase}} -
+        {{student.address | lowercase}}
+    </li>
+
+    <!--this is for salary filtering using orderby filter method-->
+    <li ng-repeat="student in students | orderBy:'-salary'">
+            {{student.salary|number}} - {{student.salary|number:4}}
+
+        <!--{{student.salary|number}} brings comma in number-->
+        <!--{{student.salary|number:4}} adds four extra zero after point-->
+
+        {{student.salary|currency: "$"}}
+
+        <!--{{student.salary|currency: "Rs."}} brings $ symbol-->
+
+    </li>
+</ul>
+</div>
+
+
+
+</body>
+</html>

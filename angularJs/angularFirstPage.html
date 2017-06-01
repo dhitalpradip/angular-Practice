@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sanga Landing Page</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+
+</head>
+<body ng-app>
+<div id="titlePane">
+    <div class="logo apple-clear-logo"></div>
+    <div class="titleText">Angular{{textboxVal}} {{}}</div>
+</div>
+
+<div class="content contentWhite">
+    <h3 class='subHeading tabHeading'>
+        <span class='headingTxt'>AngularJS - {{carMake}}</span>
+        <span class='fr reconAccountName'>{{textboxVal}}</span>
+    </h3>
+
+    <form class="richUIForm">
+        <div class='formGroup'>
+            <label>Data Bind:</label><input type="text" ng-model="textboxVal"  ng-show="1==1">
+        </div>
+        <div class='formGroup'>
+            <label>Car Make:</label><input type="text" id="carMake" ng-model="carMake" data-Property="make" value="">
+        </div>
+        <div class='formGroup'>
+            <label>Car Model:</label><input type="text" id="carModel" data-Property="model" value="">
+        </div>
+        <div class='formGroup'>
+            <label>Car Year:</label>
+            <input type="text" id="carYear" value="" data-Property="year">
+        </div>
+        <div class="formGroup fr">
+            <button type="button" class="blueButton" id="btnCreateCar" ng-click="alert(1);">Create Car</button>
+        </div>
+    </form>
+
+    <h3 class='subHeading tabHeading'>
+        <span class='headingTxt'>Added Cars</span>
+    </h3>
+    <table border="1" id="detailsInfo">
+
+    </table>
+
+</div>
+<script>
+
+</script>
+</body>
+
+</html>

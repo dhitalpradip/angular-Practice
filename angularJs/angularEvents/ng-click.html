@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-click event</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="mainController">
+    <button ng-click="increment()">Click to Increment</button>
+    Counter : {{counter}}
+
+    <button ng-click="myCount = myCount+1">number of counter</button>
+    {{myCount}}
+
+</div>
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',function($scope){
+        $scope.counter = 0;
+        $scope.increment = function(){
+            $scope.counter+=2;
+        }
+    });
+</script>
+</body>
+</html>

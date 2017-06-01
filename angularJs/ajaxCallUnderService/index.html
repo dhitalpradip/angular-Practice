@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>form and ajax call</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+
+</head>
+<style>
+    .even{
+        background-color: green;
+    }
+</style>
+<body ng-app="mainModule">
+
+<div  ng-controller="loadUserController">
+<!--to get the json data-->
+    <table border="1" id="detailsInfo" class="table table-hover">
+        <thead>
+        <th>S.N.</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Country</th>
+        <th>Gender</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="details in userDetails" ng-class="{'even':$index%2==0}">
+            <td>{{$index}}</td>
+            <td>{{details.email}}</td>
+            <td>{{details.password}}</td>
+            <td>{{details.country}}</td>
+            <td>{{details.gender}}</td>
+            <td ng-click="editUser(details)">Edit</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript" rel="script" src="formAndAjaxCall.controller.js"></script>
+<script type="text/javascript" rel="script" src="formAndAjaxCall.service.js"></script>
+
+
+</body>
+</html>

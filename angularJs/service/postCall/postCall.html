@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST CALL TO SERVER</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="mainController">
+    <label>First Name:
+    <input type="text" ng-model="firstName" required />
+    </label>
+    <label>Last Name:
+        <input type="text" ng-model="lastName" required />
+    </label><br/>
+    <label>Click to send data to server:
+    <button ng-click="sendData()">Send Data</button>
+    </label>
+    {{PostDataResponse}}
+</div>
+
+<script>
+    var myApp = angular.module('mainModule',[]);
+    myApp.controller('mainController',['$scope','$http',function($scope,$http){
+        $scope.sendData = function () {
+            var data = {
+                fName: $scope.firstName,
+                lName: $scope.lastName
+            }
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }
+
+
+            $http.post('userPostData.json', data, config)
+                .success(function (data, status, header, config) {
+                    $scope.PostDataResponse = "Data is:" + data;
+                })
+                .error(function (data, status, header, config) {
+                    $scope.responseDetails = "Data is :" + data +
+                        "Status is : " + status +
+                        "Header is :" + header +
+                        "Config is " + config;
+                });
+        };
+    }]);
+</script>
+</body>
+
+</html>

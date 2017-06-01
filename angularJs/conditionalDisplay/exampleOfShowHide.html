@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>showHIDE</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<!--<body ng-app="mainModule">-->
+<!--<div ng-controller='mainController'>-->
+    <!--<div ng-hide="thisIsHidden"> {{hidden}}</div>-->
+    <!--<button ng-click="clickToHide()" ng-model="thisIsHidden">click to hide and show</button>-->
+    <!---->
+
+<!--</div>-->
+
+<!--<script>-->
+    <!--var myApp = angular.module('mainModule',[]);-->
+    <!--myApp.controller('mainController', function($scope){-->
+        <!--$scope.clickToHide = function(){-->
+            <!--$scope.hidden = $scope.thisIsHidden;-->
+        <!--}-->
+
+    <!--});-->
+<!--</script>-->
+
+<body ng-app>
+
+Toggle Check it: <input type="checkbox" ng-model="thisIsToggle">
+
+    <div ng-show="thisIsToggle" style="width:100px;height:50px;background-color:red;">I am displayed using ng-show</div>
+    <div ng-hide="thisIsToggle" style="width:100px;height:50px;background-color:green;">I am displayed using ng-hide</div>
+
+</body>
+</html>

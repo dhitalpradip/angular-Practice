@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get json data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body ng-app="mainModule">
+<div ng-controller="mainController">
+
+    <button ng-click="getAllData()">Get All Data</button> |
+    <input type="text" name="keyword" ng-model="keyword" required>
+    <button ng-click="search()">Search</button>
+
+    <ul>
+        <li ng-repeat="d in details | filter:{name:keyword}">
+            {{ d.name + ' ' + d.phone + ', ' + d.age}}
+        </li>
+    </ul>
+    <p ng-bind="responseDetails"></p>
+    {{responseDetails}}
+
+
+</div>
+
+<script>
+    var myApp= angular.module('mainModule',[]);
+    myApp.controller('mainController',['$scope','$http', function($scope,$http){
+
+        $scope.getAllData = function(){
+            $http.get('userData.json')
+                .success(function(data,status,header,config){
+                  $scope.details = data;
+                })
+                .error(function(data,status,header,config){
+                     $scope.responseDetails = "Data :" + data +
+                             "<br/> status :" + status +
+                             "<br/> header : " + jsonFilter(header) +
+                             "<br/> config : " +jsonFilter(config);
+                });
+        };
+
+        $scope.keyword = '';
+        $scope.search = function(){
+            var parameters = {
+              keyword: $scope.keyword
+            };
+            var config = {
+                params:parameters
+            };
+            $http.get('userData.json',config)
+                .success(function(data,status,header,config){
+                    $scope.details = data;
+                })
+                .error(function(data,status,header,config){
+                    $scope.responseDetails = "Data: " + data +
+                        "<hr />status: " + status +
+                        "<hr />headers: " + header +
+                        "<hr />config: " + config;
+                });
+        };
+
+    }]);
+</script>
+
+</body>
+</html>

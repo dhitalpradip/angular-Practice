@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Nested Module</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+</head>
+<body ng-app="mainTravelAppModule">
+<div id="wholeContent">
+    <div class="topicDefinition" style="color: #990000; font-size: 25px">This is an example of Nested Angular Module</div>
+    <form class="mainForm">
+
+        <!--since it is outside of controllers scope, it has access of rootscope, so the assigned value in rootscope get displayed-->
+        {{"Value of mainFood property outside of controller is maintained by rootScope, so the value is :"+ " " + mainFood }}
+        <hr/>
+
+        <!--Accessing maincontroller-->
+        <div class="formGroup" ng-controller="mainTravelAppController" ng-init="changeInputBoxColor='green'">
+            <label>Mother Tongue:</label>
+            <input type="text" value="{{countryMotherTongue}}" class="form-control" width="50px" style="background-color:{{changeInputBoxColor}}"><span style="color: red">{{countryMotherTongue}}</span>
+
+            <div class="formGroup">
+                 <label>Main Food:</label>
+                 <input type="text" value="{{mainFood}}" class="form-control" width="50px" ><span style="color: red">{{mainFood}}</span>
+            </div>
+
+            <div class="formGroup">
+                <label>Access mainFood of mainTravelAppController : </label>
+                <input type="text" class="form-control" value="{{mainFood}}" ng-click="getSecondFood()">
+            </div>
+
+            <div class="formGroup">
+                <label>Accessing parent mainFood of mainTravelAppController and use of ng-click: </label>
+                <input type="text" class="form-control" value="{{$parent.mainFood}}" ng-click="getFirstFood()">
+            </div>
+
+
+
+
+        <div class="formGroup" ng-controller="newTravelController">
+            <div class="formGroup">
+                <label>Main Food in new controller : </label>
+                <input type="text" class="form-control" value="{{$parent.$parent.mainFood}}" ng-click="getSecondFood()">
+            </div>
+        </div>
+        </div>
+        </form>
+</div>
+
+
+
+        <script>
+    var  mainTravelApp = angular.module('mainTravelAppModule',[]);
+    mainTravelApp.run(function($rootScope){
+    $rootScope.rootCountry ='Nepal';
+    $rootScope.rootDestination = 'Kathmandu';
+    $rootScope.mainFood = 'MOMO';
+    $rootScope.countryMotherTongue = 'Nepali';
+    });
+
+    mainTravelApp.controller('mainTravelAppController',function($scope,$rootScope){
+    $scope.mainFood = 'Gundruk Sadeko';
+    $scope.famousMountain = 'Mount Everest';
+    $scope.countryMotherTongue = $rootScope.countryMotherTongue + " "+ 'and other many more languages';
+    console.log($scope);
+    console.log($rootScope);
+    $scope.getFirstFood = function(){
+        console.log($scope.mainFood);
+    }
+    });
+
+    mainTravelApp.controller('newTravelController',function($scope){
+        $scope.mainFood = 'Alu Bodi Tama';
+        $scope.getSecondFood = function(){
+            console.log($scope.mainFood);
+        }
+    });
+</script>
+
+</body>
+</html>

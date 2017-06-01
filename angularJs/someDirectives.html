@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> inbuilt directives</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+
+</head>
+<body>
+<div ng-app="travelApp">
+    <div ng-controller="firstController" ng-init="listStyle='decimal'">
+        {{"total number of travellers are : " + " " +totalTravellers}}
+
+        <!--ng-repeat directives looping into array-->
+        <li ng-repeat="items in destination" style="list-style-type:{{listStyle}}">
+            {{items}}
+        </li>
+        <hr/>
+
+        <!--ng-repeat directives looping into array of ojects-->
+        <li ng-repeat="items in travellerInfo" style="list-style-type:{{listStyle}}">
+            {{items.name + " is " + items.age + " years old and lives in " + items.state}}
+        </li>
+
+        <!--<label>Click me : <input type="checkbox" ng-model="checked" ng-init="checked=true" ></label><br/>-->
+        <!--Show if checked:-->
+        <!--<span ng-if="checked">-->
+            <!--this is removed when the check-->
+        <!--</span>-->
+
+
+
+    </div>
+
+
+</div>
+<script>
+    var myApp = angular.module('travelApp',[]);
+    myApp.controller('firstController',function($scope){
+        $scope.destination=['Annapurna Base Camp(ABC)', 'Pokhara', 'Kathmandu', 'Mustang'];
+        $scope.travellerInfo = [
+            {name:'john', age:25, state:'california'},
+            {name:'marcel', age:28, state:'texas'},
+            {name:'klaus', age:29, state:'virginia'},
+            {name:'elizah', age:35, state:'nevada'},
+            {name:'haley', age:31, state:'portland'}
+            ];
+        $scope.maleTravellers = 25;
+        $scope.femaleTravellers = 50;
+        $scope.totalTravellers =  $scope.maleTravellers + $scope.femaleTravellers;
+    });
+</script>
+
+</body>
+</html>

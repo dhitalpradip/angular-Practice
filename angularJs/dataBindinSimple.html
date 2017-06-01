@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data binding simple</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js "></script>
+</head>
+<body ng-app>
+<div id="containerDiv">
+    UserName: <span class="displayDivison">{{dataBindUserName}}</span>
+</div>
+
+<form id="userForm">
+   <div class="formGroup">
+       <label> UserName : </label><input type="text" ng-model="dataBindUserName" ng-show="1==1">
+   </div>
+</form>
+</body>
+</html>
